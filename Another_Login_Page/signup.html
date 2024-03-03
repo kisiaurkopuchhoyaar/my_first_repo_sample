@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+
+    <form method="post" class="form-container" action="">
+        <h2 class="title">SignUp</h2>
+        <div class="input-container">
+      
+              <input type="text" name="username" id="username" autocomplete="username" required pattern="[0-9a-zA-Z]{4,10}">
+              <label for="username">username</label>
+            </div>
+    <div class="input-container">
+       
+        
+        <input type="password" name="password" id="password" autocomplete="current-password" required pattern="[0-9a-zA-Z]+(^a-zA-Z\d\s:){6,13}">
+        <label for="password">password</label>
+    </div>
+        <div class="input-container">
+       
+        <input type="password" name="confirm-password" id="confirm-password" autocomplete="current-password" required>
+        <label for="confirm-password">confirm password</label>
+    </div>
+        <div class="input-container">
+       
+        <input type="email" name="email" id="email" required data-is-valid="false">
+        <label for="email">email</label>
+        </div>
+        <input type="submit" class="btn" value="signup" >
+       <a href="login.html"> already have account?</a>
+    </form>
+</div>
+    
+</body>
+</html>

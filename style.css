@@ -1,0 +1,91 @@
+*{
+    font-family: quicksand,sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    --s: 60px; /* control the size */
+    
+    --c:#1C2130 0 25%,#0000 0;
+    --p:0 0/calc(3*var(--s)) calc(2*var(--s));
+    background:
+      conic-gradient(from -45deg at 75% 62.5%,var(--c)) var(--p),
+      conic-gradient(from 135deg at 25% 37.5%,var(--c)) var(--p),
+      repeating-conic-gradient(from 90deg,var(--c),#D14334 0 50%)
+       0 0/var(--s) var(--s);
+  }
+  
+h1 {
+
+    text-align: center;
+    font: 300% sans-serif;
+    backdrop-filter: invert(80%);
+
+}
+#container {
+   display : flex;
+   justify-content: center;
+   align-items: center;
+  margin-inline: auto;
+  margin:auto;
+  max-width: 30%;
+  margin-top: 10rem;
+
+    
+    border: 2px solid black;
+    
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(72,43,58,1) 100%);
+    filter: drop-shadow(1rem 1rem 0.75rem rgba(193, 93, 251, 0.164));
+}
+
+.input-container
+{
+    margin-top: 2rem;
+    display:flex;
+   
+
+
+}
+
+input{
+    width: 100%;
+    
+    padding: 0.5rem  ;
+    font-size: 16px;
+    color: #010c34;
+    
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    background: transparent;
+}
+input:focus {
+  background: rgba(143, 213, 13, 0.1);
+  border-radius: 5px;
+}
+label{
+    /* display:block; */
+    /* position:absolute; */
+  
+
+    
+    font: size 300%;
+    font: weight bold;
+    color: rgba(33, 1, 24, 0.469);
+    
+    pointer-events: none;
+    transition: 5s;
+
+}
+input:focus:has(+ label) {
+    
+
+  transform: translateY(-20%);
+  font-size: 20px;
+  color: #010d32;
+}
+
+
+

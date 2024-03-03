@@ -1,0 +1,127 @@
+*{
+    font-family: "roboto slab",sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    
+
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:5rem;
+    
+    margin-inline: auto;
+    width:max(400px,100%);
+    /* height: 600vh;
+    width: 350vw; */
+    
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+
+    
+   
+    
+    margin-inline: auto;
+  
+
+    
+    border: #010d32 1px solid;
+    border-style:ridge;
+    
+
+}
+.title{
+    font-size:2.5em;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 0.5vw;
+    margin-right: 1vw;
+    color: #697c8e;
+    position: relative;
+    background: linear-gradient(90deg,#0f0,#1899ff,#f0f,#f00,#ff0 );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 0.04em transparent;
+
+}
+
+
+.input-container{
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 2em;
+    position : relative;
+    
+    
+   
+}
+.input-container input{
+    position: relative;
+    padding: 0.3em;
+    color: rgb(2, 4, 36);
+    font-size: 12px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    
+    border:none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    
+   
+}
+.input-container input:focus{
+    background-color:hsl(0, 15%, 90%); ;
+}
+.input-container label{
+    position: absolute;
+    transition: 0.5s ease-out;
+    
+}
+input:focus ~label,
+input:valid ~ label
+{
+    transform: translateY(-45%);
+    font-size: 0.5rem;
+    padding: 1em 0.1em;
+    
+    
+    color: #010d32;
+  }
+ 
+  
+             
+    .btn {
+        background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53  90%);
+        appearance: button;
+        margin: 10px;
+        padding: 0.5em 1.5em;
+        text-align: center;
+        text-transform: uppercase;
+        cursor: pointer;
+        outline: none;
+        transition: 0.5s;
+        background-size: 200% auto;
+        color: white;            
+        border:none;
+        border-radius: 10000000000px;
+        display: block;
+      }
+
+      .btn:hover,
+      .btn:focus {
+        background-position: right center;
+        transform: scale(1.1); /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+        /* box-shadow: 0 0 5px #1a3601; */
+        filter: drop-shadow(0 0 5px #b4b5b4);
+      }
+     
+  
