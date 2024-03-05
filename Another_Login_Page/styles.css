@@ -4,8 +4,14 @@
   margin: 0;
   padding: 0;
 }
-html{
-  background:radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+html {
+  background: radial-gradient(
+    circle at 100%,
+    #333,
+    #333 50%,
+    #eee 75%,
+    #333 75%
+  );
 }
 .container {
   display: flex;
@@ -15,6 +21,7 @@ html{
 
   margin-inline: auto;
   width: max(400px, 100%);
+  margin-left: 20%;
   /* height: 600vh;
     width: 350vw; */
 }
@@ -24,24 +31,26 @@ html{
   justify-content: center;
   align-items: center;
   font-size: large;
-  background-color: #0960bd;
+  /* background-color: #0960bd; */
 
   margin-inline: auto;
 
-  border: #010d32 1px solid;
+  /* border: #010d32 1px solid;
   border-style: ridge;
-  border-radius: 10px;
+  border-radius: 10px; */
 }
 .title {
-  font:initial;
+  font: initial;
   font-size: 2.5em;
   margin-bottom: 1.5rem;
   margin-top: 1rem;
   margin-left: 0.5vw;
   margin-right: 1vw;
-  color: #f5f4e8;
+  color: #fff;
   position: relative;
-  font-family :SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
+    Helvetica, Arial, sans-serif;
+  font-weight: 500;
   /* background: linear-gradient(90deg, #0f0, #1899ff, #f0f, #f00, #ff0);
   background-clip: text;
   -webkit-background-clip: text;
@@ -58,7 +67,7 @@ html{
   position: relative;
   padding: 0.2em;
   padding-top: 0.3em;
-  color: #e7e7e7;
+  color: #fff;
   background-color: rgb(223, 227, 167);
   font-size: inherit;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -70,16 +79,16 @@ html{
 }
 .input-container input:focus {
   background-color: hsl(0, 15%, 90%);
-  border: none;
-  border: 1px solid #393b3c;
   border-radius: 5px;
   color: #010d32;
+  border: 1px solid;
+  border-radius: 12px;
 }
 .input-container label {
   font-weight: bold;
   position: absolute;
   transition: 0.5s ease-out;
-  color: #f5f4e8;
+  color: #fff;
 }
 input:focus ~ label,
 input:valid ~ label {
@@ -87,17 +96,17 @@ input:valid ~ label {
   font-size: 0.8rem;
   padding: 1em 0.1em;
 
-  color: #f5f4e8;
+  color: #fff;
 }
 
 .btn {
   background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
   appearance: button;
-  
+
   margin-bottom: 2rem;
   padding: 0.5em 1.5em;
-  font:initial;
-  font-size:1.1rem;
+  font: initial;
+  font-size: 1.1rem;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
@@ -119,8 +128,7 @@ input:valid ~ label {
   /* box-shadow: 0 0 5px #1a3601; */
   filter: drop-shadow(0 0 5px #b4b5b4);
 }
-a{
-
+a {
   margin-bottom: 1rem;
   color: hsla(0, 0%, 100%, 0.966);
   text-decoration: none;
@@ -131,5 +139,4 @@ a:hover {
   color: #f5f4e8;
   text-shadow: 0 0 5px hsl(300, 12%, 18%);
   filter: drop-shadow(0 0 5px hsla(291, 83%, 88%, 0.667));
-  
 }
