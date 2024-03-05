@@ -4,6 +4,9 @@
   margin: 0;
   padding: 0;
 }
+html{
+  background:radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
+}
 .container {
   display: flex;
   justify-content: center;
@@ -30,6 +33,7 @@
   border-radius: 10px;
 }
 .title {
+  font:initial;
   font-size: 2.5em;
   margin-bottom: 1.5rem;
   margin-top: 1rem;
@@ -37,6 +41,7 @@
   margin-right: 1vw;
   color: #f5f4e8;
   position: relative;
+  font-family :SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
   /* background: linear-gradient(90deg, #0f0, #1899ff, #f0f, #f00, #ff0);
   background-clip: text;
   -webkit-background-clip: text;
@@ -88,8 +93,11 @@ input:valid ~ label {
 .btn {
   background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
   appearance: button;
-  margin: 10px;
+  
+  margin-bottom: 2rem;
   padding: 0.5em 1.5em;
+  font:initial;
+  font-size:1.1rem;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
@@ -110,4 +118,18 @@ input:valid ~ label {
   text-decoration: none;
   /* box-shadow: 0 0 5px #1a3601; */
   filter: drop-shadow(0 0 5px #b4b5b4);
+}
+a{
+
+  margin-bottom: 1rem;
+  color: hsla(0, 0%, 100%, 0.966);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #f5f4e8;
+  text-shadow: 0 0 5px hsl(300, 12%, 18%);
+  filter: drop-shadow(0 0 5px hsla(291, 83%, 88%, 0.667));
+  
 }
