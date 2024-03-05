@@ -4,8 +4,10 @@
   margin: 0;
   padding: 0;
 }
-html {
+.super-container {
+  height:100dvh;
   background: radial-gradient(
+    
     circle at 100%,
     #333,
     #333 50%,
@@ -14,14 +16,17 @@ html {
   );
 }
 .container {
+  
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5rem;
+  justify-content: flex-end;
+  align-items: flex-end;
+  /* margin-top: 5rem; */
 
   margin-inline: auto;
-  width: max(400px, 100%);
-  margin-left: 20%;
+  margin-left: 35%;
+ 
+  
+
   /* height: 600vh;
     width: 350vw; */
 }
@@ -43,13 +48,12 @@ html {
   font: initial;
   font-size: 2.5em;
   margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 8rem;
   margin-left: 0.5vw;
   margin-right: 1vw;
   color: #fff;
   position: relative;
-  font-family: SF Pro Display, SF Pro Icons, AOS Icons, Helvetica Neue,
-    Helvetica, Arial, sans-serif;
+  font-family: "trocchi", serif;
   font-weight: 500;
   /* background: linear-gradient(90deg, #0f0, #1899ff, #f0f, #f00, #ff0);
   background-clip: text;
