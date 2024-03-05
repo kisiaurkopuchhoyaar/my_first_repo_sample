@@ -20,17 +20,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  background-color: color-mix(in srgb, rgba(111, 107, 111, 0.382), rgb(224, 164, 164));
-  
-   
-
+  font-size: large;
+  background-color: #0960bd;
 
   margin-inline: auto;
 
   border: #010d32 1px solid;
   border-style: ridge;
-  
+  border-radius: 10px;
 }
 .title {
   font-size: 2.5em;
@@ -38,12 +35,12 @@
   margin-top: 1rem;
   margin-left: 0.5vw;
   margin-right: 1vw;
-  color: #697c8e;
+  color: #f5f4e8;
   position: relative;
-  background: linear-gradient(90deg, #0f0, #1899ff, #f0f, #f00, #ff0);
+  /* background: linear-gradient(90deg, #0f0, #1899ff, #f0f, #f00, #ff0);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-stroke: 0.04em transparent;
+  -webkit-text-stroke: 0.04em transparent; */
 }
 
 .input-container {
@@ -51,36 +48,41 @@
   flex-direction: column-reverse;
   padding: 2em;
   position: relative;
-  width: 50vw;
-  
 }
 .input-container input {
   position: relative;
-  padding: 0.3em;
-  color: rgb(2, 4, 36);
+  padding: 0.2em;
+  padding-top: 0.3em;
+  color: #e7e7e7;
   background-color: rgb(223, 227, 167);
-  font-size: 12px;
+  font-size: inherit;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-background-color:inherit;
+  background-color: inherit;
   border: none;
   border-bottom: 1px solid #ccc;
   outline: none;
-  
+  width: 20rem;
 }
 .input-container input:focus {
   background-color: hsl(0, 15%, 90%);
+  border: none;
+  border: 1px solid #393b3c;
+  border-radius: 5px;
+  color: #010d32;
 }
 .input-container label {
+  font-weight: bold;
   position: absolute;
   transition: 0.5s ease-out;
+  color: #f5f4e8;
 }
 input:focus ~ label,
 input:valid ~ label {
-  transform: translateY(-45%);
-  font-size: 0.5rem;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
   padding: 1em 0.1em;
 
-  color: #010d32;
+  color: #f5f4e8;
 }
 
 .btn {
