@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SignUp</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <div class="super-container">
     <div class="container">
+      
       <form method="post" class="form-container" action="">
         <h2 class="title">SignUp</h2>
         <div class="input-container">
+          <span ></span>
           <input
             type="text"
             name="username"
@@ -19,20 +22,27 @@
             autocomplete="username"
             required
             pattern="[0-9a-zA-Z]{4,15}"
+            title="Please enter a valid username with 4-16 characters"
+            
           />
           <label for="username">Username</label>
         </div>
-        <div class="input-container">
+        <div class="input-container ">
+          <span ></span>
           <input
             type="password"
             name="password"
             id="password"
             autocomplete="current-password"
             required
+            pattern="[0-9a-zA-Z]{6,12}"
+            title="Please enter a valid password with 6-12 characters and contain alphanumeric and special characters"
+            
           />
           <label for="password">Password</label>
         </div>
         <div class="input-container">
+          <span "></span>
           <input
             type="password"
             name="confirm-password"
@@ -43,12 +53,13 @@
           <label for="confirm-password">Confirm Password</label>
         </div>
         <div class="input-container">
+          <span ></span>
           <input
             type="email"
             name="email"
             id="email"
             required
-            data-is-valid="false"
+            
           />
           <label for="email">Email</label>
         </div>

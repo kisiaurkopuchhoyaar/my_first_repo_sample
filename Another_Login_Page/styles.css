@@ -8,6 +8,7 @@
   padding: 0;
 }
 .super-container {
+  
   height:100dvh;
   background: radial-gradient(
     
@@ -19,10 +20,11 @@
   );
 }
 .container {
+  max-height: 75% auto;
   
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+
+  
   /* margin-top: 5rem; */
 
   margin-inline: auto;
@@ -51,7 +53,7 @@
   font: initial;
   font-size: 2.5em;
   margin-bottom: 1.5rem;
-  margin-top: 8rem;
+  margin-top: 20%;
   margin-left: 0.5vw;
   margin-right: 1vw;
   color:var(--color);
@@ -98,15 +100,15 @@
   color:var(--color);
 }
 input:focus ~ label,
-input:valid ~ label,
-input:not(:placeholder-shown) ~ label,
-input:invalid ~ label {
+input:valid ~ label {
   transform: translateY(-50%);
   font-size: 0.8rem;
   padding: 1em 0.1em;
 
   color: var(--color);
 }
+
+
 
 .btn {
   background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
