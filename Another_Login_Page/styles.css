@@ -1,16 +1,15 @@
-:root{
-  --color:#fff;
+:root {
+  --color: #fff;
 }
 * {
-  font-family: "roboto slab", sans-serif;
+  font-family: "Fira sans", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 .super-container {
-  height:100dvh;
+  height: 100dvh;
   background: radial-gradient(
-    
     circle at 100%,
     #333,
     #333 50%,
@@ -19,19 +18,12 @@
   );
 }
 .container {
-  
+  max-height: 75% auto;
+
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  /* margin-top: 5rem; */
 
   margin-inline: auto;
   margin-left: 35%;
- 
-  
-
-  /* height: 600vh;
-    width: 350vw; */
 }
 .form-container {
   display: flex;
@@ -51,10 +43,10 @@
   font: initial;
   font-size: 2.5em;
   margin-bottom: 1.5rem;
-  margin-top: 8rem;
+  margin-top: 20%;
   margin-left: 0.5vw;
   margin-right: 1vw;
-  color:var(--color);
+  color: var(--color);
   position: relative;
   font-family: "trocchi", serif;
   font-weight: 500;
@@ -74,10 +66,9 @@
   position: relative;
   padding: 0.2em;
   padding-top: 0.3em;
-  color:var(--color);
-  background-color: rgb(223, 227, 167);
+  color: var(--color);
   font-size: inherit;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: inherit;
   background-color: inherit;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -95,17 +86,48 @@
   font-weight: bold;
   position: absolute;
   transition: 0.5s ease-out;
-  color:var(--color);
+  color: var(--color);
 }
 input:focus ~ label,
-input:valid ~ label,
-input:not(:placeholder-shown) ~ label,
-input:invalid ~ label {
+input:valid ~ label {
   transform: translateY(-50%);
   font-size: 0.8rem;
   padding: 1em 0.1em;
 
   color: var(--color);
+}
+
+.input-container.sucess input {
+  content: "";
+}
+.input-container.success::after {
+  content: "\2714"; /* Unicode for a checkmark symbol */
+  color: var(--color); /* Green color for the tick */
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.input-container.error input {
+  border: initial;
+  border-bottom: 1px solid #e74c3c;
+}
+.input-container.error label {
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 1em 0.1em;
+
+  color: var(--color);
+}
+span {
+  position: absolute;
+  color: var(--color);
+  font-size: 0.9rem;
+  padding-left: auto;
+  bottom: -0.1rem;
+  z-index: 2;
+  animation: blink 2s linear infinite;
 }
 
 .btn {
@@ -132,7 +154,7 @@ input:invalid ~ label {
 .btn:focus {
   background-position: right center;
   transform: scale(1.1); /* change the direction of the change here */
-  color:var(--color);
+  color: var(--color);
   text-decoration: none;
   /* box-shadow: 0 0 5px #1a3601; */
   filter: drop-shadow(0 0 5px #b4b5b4);
@@ -148,4 +170,13 @@ a:hover {
   color: #f5f4e8;
   text-shadow: 0 0 5px hsl(300, 12%, 18%);
   filter: drop-shadow(0 0 5px hsla(291, 83%, 88%, 0.667));
+}
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+    color: hsl(0, 20%, 65%);
+  }
+  100% {
+    opacity: 1;
+  }
 }
