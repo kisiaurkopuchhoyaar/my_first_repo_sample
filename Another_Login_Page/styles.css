@@ -1,18 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
-:root{
-  --color:#fff;
+:root {
+  --color: #fff;
 }
 * {
-  font-family: "roboto slab", sans-serif;
+  font-family: "Fira sans", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 .super-container {
-  
-  height:100dvh;
+  height: 100dvh;
   background: radial-gradient(
-    
     circle at 100%,
     #333,
     #333 50%,
@@ -22,16 +19,13 @@
 }
 .container {
   max-height: 75% auto;
-  
+
   display: flex;
 
-  
   /* margin-top: 5rem; */
 
   margin-inline: auto;
   margin-left: 35%;
- 
-  
 
   /* height: 600vh;
     width: 350vw; */
@@ -57,7 +51,7 @@
   margin-top: 20%;
   margin-left: 0.5vw;
   margin-right: 1vw;
-  color:var(--color);
+  color: var(--color);
   position: relative;
   font-family: "trocchi", serif;
   font-weight: 500;
@@ -77,9 +71,9 @@
   position: relative;
   padding: 0.2em;
   padding-top: 0.3em;
-  color:var(--color);
+  color: var(--color);
   font-size: inherit;
-  font-family: "Inconsolata", monospace;
+  font-family: inherit;
   background-color: inherit;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -97,7 +91,7 @@
   font-weight: bold;
   position: absolute;
   transition: 0.5s ease-out;
-  color:var(--color);
+  color: var(--color);
 }
 input:focus ~ label,
 input:valid ~ label {
@@ -108,31 +102,38 @@ input:valid ~ label {
   color: var(--color);
 }
 
-.input-container.sucess input{
-  content: '';
+.input-container.sucess input {
+  content: "";
 }
-.input-container.error input{
-  border:initial;
+.input-container.success::after {
+  content: "\2714"; /* Unicode for a checkmark symbol */
+  color: var(--color); /* Green color for the tick */
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+}
+
+.input-container.error input {
+  border: initial;
   border-bottom: 1px solid #e74c3c;
 }
-.input-container.error label{
+.input-container.error label {
   transform: translateY(-50%);
   font-size: 0.8rem;
   padding: 1em 0.1em;
 
   color: var(--color);
-  
 }
-span{
-  position:absolute;
+span {
+  position: absolute;
   color: var(--color);
-  font-size: 0.8rem;
-  padding-left:auto;
+  font-size: 0.9rem;
+  padding-left: auto;
   bottom: -0.1rem;
-  animation: blink 1s linear infinite;
+  z-index: 2;
+  animation: blink 2s linear infinite;
 }
-
-
 
 .btn {
   background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
@@ -158,7 +159,7 @@ span{
 .btn:focus {
   background-position: right center;
   transform: scale(1.1); /* change the direction of the change here */
-  color:var(--color);
+  color: var(--color);
   text-decoration: none;
   /* box-shadow: 0 0 5px #1a3601; */
   filter: drop-shadow(0 0 5px #b4b5b4);
@@ -176,13 +177,11 @@ a:hover {
   filter: drop-shadow(0 0 5px hsla(291, 83%, 88%, 0.667));
 }
 @keyframes blink {
-  0%{
-    opacity: 0;
+  50% {
+    opacity: 0.5;
+    color: hsl(0, 20%, 65%);
   }
-  50%{
+  100% {
     opacity: 1;
-  }
-  100%{
-    opacity: 0;
   }
 }

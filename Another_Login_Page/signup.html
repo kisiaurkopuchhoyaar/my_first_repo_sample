@@ -23,7 +23,8 @@
             required
             pattern="[0-9a-zA-Z]{4,15}"
             title="Please enter a valid username with 4-16 characters"
-            
+            minlength="4"
+            maxlength="15"
           />
           <label for="username">Username</label>
         </div>
@@ -36,7 +37,9 @@
             autocomplete="current-password"
             required
             pattern="[0-9a-zA-Z]{6,12}"
-            title="Please enter a valid password with 6-12 characters and contain alphanumeric and special characters"
+            title="Please enter a valid password with 6-12 characters and contain alphanumeric"
+            minlength="6"
+            maxlength="12"
             
           />
           <label for="password">Password</label>
