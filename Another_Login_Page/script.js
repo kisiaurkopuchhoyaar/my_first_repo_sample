@@ -3,6 +3,7 @@ const passwordEl = document.getElementById("password");
 const confirmEl = document.getElementById("confirm-password");
 const emailEl = document.getElementById("email");
 const submitBtn = document.getElementById("submit");
+const formEl = document.getElementById("form");
 
 
 const checkUsername = () => {
@@ -16,14 +17,18 @@ const checkUsername = () => {
 
     if (validity.valueMissing) {
         showError(usernameEl, 'Username cannot be blank.');
-    } else if (validity.patternMismatch) {
-        showError(usernameEl, "username must contain alphanumerical values!!")
-    } else if (validity.tooLong) {
-        showError(usernameEl, 'username must be at most 15 characters long');
+   
+  
     }
         else if(validity.tooShort) {
             showError(usernameEl, 'username must be at least 4 characters long');
         }
+     else if (validity.patternMismatch) {
+        showError(usernameEl, "username must contain alphanumerical values!!")
+     }
+     else if (validity.tooLong) {
+        showError(usernameEl, 'username must be at most 15 characters long');
+     }
      else {
         showSuccess(usernameEl);
         valid = true;
@@ -71,7 +76,7 @@ const checkConfirmPassword = () => {
     // check confirm password
     const confirmPassword = confirmEl.value.trim();
     const password = passwordEl.value.trim();
-    const validity =confirEl.validity;
+    const validity =confirmEl.validity;
 
     if (validity.valueMissing) {
         showError(confirmEl, 'Please enter the password again');
@@ -115,8 +120,7 @@ const showSuccess = (input) => {
     error.textContent = '';
 }
 
-
-form.addEventListener('submit', function (e) {
+formEl.addEventListener('submit', function (e) {
     // prevent the form from submitting
     e.preventDefault();
 
@@ -133,12 +137,13 @@ form.addEventListener('submit', function (e) {
 
     // submit to the server if the form is valid
     if (isFormValid) {
-
+console.log("all good!")
     }
+    else console.log("Not good!")
 });
 
 
-const debounce = (fn, delay = 5000) => {
+const debounce = (fn, delay = 2000) => {
     let timeoutId;
     return (...args) => {
         // cancel the previous timer
@@ -152,7 +157,7 @@ const debounce = (fn, delay = 5000) => {
     };
 };
 
-form.addEventListener('input', debounce(function (e) {
+formEl.addEventListener('input', debounce(function (e) {
     switch (e.target.id) {
         case 'username':
             checkUsername();

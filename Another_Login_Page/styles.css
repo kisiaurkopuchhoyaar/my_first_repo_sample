@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 :root{
   --color:#fff;
 }
@@ -77,9 +78,8 @@
   padding: 0.2em;
   padding-top: 0.3em;
   color:var(--color);
-  background-color: rgb(223, 227, 167);
   font-size: inherit;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Inconsolata", monospace;
   background-color: inherit;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -106,6 +106,23 @@ input:valid ~ label {
   padding: 1em 0.1em;
 
   color: var(--color);
+}
+
+input-container.sucess input{
+  border:initial;
+  border-color: #2ecc71;
+}
+input-container.error input{
+  border:initial;
+  border-bottom: 1px solid #e74c3c;
+}
+span{
+  position:absolute;
+  color: var(--color);
+  font-size: 0.8rem;
+  padding-left:auto;
+  bottom: -0.1rem;
+  animation: blink 1s linear infinite;
 }
 
 
@@ -150,4 +167,15 @@ a:hover {
   color: #f5f4e8;
   text-shadow: 0 0 5px hsl(300, 12%, 18%);
   filter: drop-shadow(0 0 5px hsla(291, 83%, 88%, 0.667));
+}
+@keyframes blink {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
 }
