@@ -108,13 +108,20 @@ input:valid ~ label {
   color: var(--color);
 }
 
-input-container.sucess input{
-  border:initial;
-  border-color: #2ecc71;
+.input-container.sucess input{
+  content: '';
 }
-input-container.error input{
+.input-container.error input{
   border:initial;
   border-bottom: 1px solid #e74c3c;
+}
+.input-container.error label{
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 1em 0.1em;
+
+  color: var(--color);
+  
 }
 span{
   position:absolute;
