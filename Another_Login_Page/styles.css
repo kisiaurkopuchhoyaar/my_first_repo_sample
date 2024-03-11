@@ -22,13 +22,8 @@
 
   display: flex;
 
-  /* margin-top: 5rem; */
-
   margin-inline: auto;
   margin-left: 35%;
-
-  /* height: 600vh;
-    width: 350vw; */
 }
 .form-container {
   display: flex;

@@ -44,8 +44,6 @@ const checkPassword = () => {
   let valid = false;
   const validity = passwordEl.validity;
 
-  // const password = passwordEl.value.trim();
-
   if (validity.valueMissing) {
     showError(passwordEl, "Password cannot be blank");
   } else if (validity.tooShort) {
