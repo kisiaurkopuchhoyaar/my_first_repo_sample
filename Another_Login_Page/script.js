@@ -4,6 +4,16 @@ const confirmEl = document.getElementById("confirm-password");
 const emailEl = document.getElementById("email");
 const submitBtn = document.getElementById("submit");
 const formEl = document.getElementById("form");
+const capLock = document
+  .querySelector("input[type=password]")
+  .addEventListener("keyup", function (keyboardEvent) {
+    const capsLockOn = keyboardEvent.getModifierState("CapsLock");
+    if (capsLockOn) {
+      showError(passwordEl, "CapsLock is ON!!");
+    } else {
+      checkPassword();
+    }
+  });
 
 const checkUsername = () => {
   let valid = false;
@@ -107,27 +117,34 @@ const showSuccess = (input) => {
   error.textContent = "";
 };
 
-formEl.addEventListener("submit", function (e) {
-  // prevent the form from submitting
-  e.preventDefault();
+// formEl.addEventListener("submit", function (e) {
+//   // prevent the form from submitting
+//   e.preventDefault();
 
-  // validate fields
-  let isUsernameValid = checkUsername(),
-    isEmailValid = checkEmail(),
-    isPasswordValid = checkPassword(),
-    isConfirmPasswordValid = checkConfirmPassword();
+// validate fields
+// let isUsernameValid = checkUsername(),
+//   isEmailValid = checkEmail(),
+//   isPasswordValid = checkPassword(),
+//   isConfirmPasswordValid = checkConfirmPassword();
 
-  let isFormValid =
-    isUsernameValid &&
-    isEmailValid &&
-    isPasswordValid &&
-    isConfirmPasswordValid;
+// let isFormValid =
+//   isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid;
 
-  // submit to the server if the form is valid
-  if (isFormValid) {
-    console.log("all good!");
-  } else console.log("Not good!");
-});
+//   // submit to the server if the form is valid
+//   fetch("/signup", {
+//     method: "POST",
+//     body: formData,
+//   })
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log("Success!", data);
+//     })
+//     .catch(function (error) {
+//       console.error("Error!", error);
+//     });
+// });
 
 const debounce = (fn, delay = 2000) => {
   let timeoutId;

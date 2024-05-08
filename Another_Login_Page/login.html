@@ -10,20 +10,20 @@
 <body>
    <div class = "super-container">
     <div class="container">
-        <form action="" class="form-container" method="post">
+        <form action="/login" class="form-container" method="post">
             <h1 class="title" data-text="login">SignIn</h1>
             <div class ="input-container">
                 <span id="username-error" "></span>
-            <input type="text" name="username" id="username" autocomplete="username" required minlength="4" maxlength="16">
+            <input type="text" name="username" id="username" autocomplete="username" required minlength="6" maxlength="20">
             <label for="username">Username</label>
             </div>
             <div class ="input-container">
                 <span id="password-error"></span>
-            <input type="password" name="password" id="password" autocomplete="current-password" required minlength="6" maxlength="12">
+            <input type="password" name="password" id="password" autocomplete="current-password" required minlength="6" maxlength="20">
             <label for="password">Password</label>
             </div>
             <input type="submit" class ="btn" value="login">
-            <a href="/restore">Forgot password ?</a><br>
+            <a href="reset.html">Forgot password ?</a><br>
             <a href="signup.html">Don't have an account?</a>
             
         </form>
