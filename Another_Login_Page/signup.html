@@ -27,11 +27,13 @@
             minlength="4"
             maxlength="15"
             hx-post="/checkUsername"
-            hx-trigger="keyup changed delay:500ms"
+           
             hx-target="span"
             hx-swap="innerHTML"
             hx-push-url="true"
+            hx-response-error ="span"
             
+
 
           />
           <label for="username">Username</label>
@@ -63,15 +65,15 @@
           <label for="confirm-password">Confirm Password</label>
         </div>
         <div class="input-container">
-          <span id ="email-span" ></span>
+          <span id =email-error ></span>
           <input
             type="email"
             name="email"
             id="email"
             required
             hx-post="/checkEmail"
-            hx-trigger="keyup changed delay:500ms"
-            hx-target="email-span"
+           
+            hx-target="#email-error"
             hx-swap="innerHTML"
             hx-push-url="true"
 

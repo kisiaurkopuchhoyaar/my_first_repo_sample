@@ -29,6 +29,9 @@ const checkUsername = () => {
   } else if (validity.tooLong) {
     showError(usernameEl, "Username must be at most 15 characters long");
   } else {
+    const error = usernameEl.querySelector("span");
+    error.textContent = "";
+    htmx.trigger(usernameEl, "keyup changed delay:500ms");
     showSuccess(usernameEl);
     valid = true;
   }
@@ -44,6 +47,9 @@ const checkEmail = () => {
   } else if (validity.typeMismatch) {
     showError(emailEl, "Email is not valid.");
   } else {
+    const error = emailEl.querySelector("span");
+    error.textContent = "";
+    htmx.trigger(emailEl, "keyup changed delay:500ms");
     showSuccess(emailEl);
     valid = true;
   }
@@ -95,27 +101,34 @@ const checkConfirmPassword = () => {
 const showError = (input, message) => {
   // get the form-field element
   const formField = input.parentElement;
+  const error = formField.querySelector("span");
   // add the error class
   formField.classList.remove("success");
   formField.classList.add("error");
 
   // show the error message
-  const error = formField.querySelector("span");
+  // const error = formField.querySelector("span");
   error.textContent = message;
 };
 
-const showSuccess = (input) => {
+const showSuccess = async (input) => {
   // get the form-field element
   const formField = input.parentElement;
-
-  // remove the error class
-  formField.classList.remove("error");
-  formField.classList.add("success");
+  const error = formField.querySelector("span");
+  if (error.textContent === "") {
+    // remove the error class
+    formField.classList.remove("error");
+    formField.classList.add("success");
+  } else {
+    formField.classList.remove("success");
+    formField.classList.add("error");
+  }
 
   // hide the error message
-  const error = formField.querySelector("span");
-  error.textContent = "";
+  // const error = formField.querySelector("span");
+  // error.textContent = "";
 };
+//if span is not empty then remove the success class
 
 // formEl.addEventListener("submit", function (e) {
 //   // prevent the form from submitting

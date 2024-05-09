@@ -117,9 +117,7 @@ router.post("/checkUsername", async (req, res) => {
     const db = getDb();
     const user = await db.collection("users").findOne({ username: username });
     if (user) {
-      return res
-        .status(400)
-        .json({ errors: [{ msg: "Username already exists" }] });
+      return res.send("Username already exists");
     }
     res.status(201).send("Username available");
   } catch (err) {
@@ -133,9 +131,7 @@ router.post("/checkEmail", async (req, res) => {
     const db = getDb();
     const user = await db.collection("users").findOne({ email: email });
     if (user) {
-      return res
-        .status(400)
-        .json({ errors: [{ msg: "Email already exists" }] });
+      return res.send("Email already exists");
     }
     res.status(201).send("Email available");
   } catch (err) {
