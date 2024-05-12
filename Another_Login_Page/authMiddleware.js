@@ -8,7 +8,7 @@ function verifyToken(req, res, next) {
     return res.status(401).json({ message: "No token provided" });
   }
   try {
-    const decoded = jwt.verify(token, "secret"); // Replace with your own JWT secret key
+    const decoded = jwt.verify(token, Process.env.SECRET_KEY); // Replace with your own JWT secret key
     req.user = decoded;
     next();
   } catch (err) {

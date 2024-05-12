@@ -93,16 +93,21 @@ router.post("/login", async (req, res) => {
     const db = getDb();
     const user = await db.collection("users").findOne({ username: username });
     if (!user) {
-      return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
+      // return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
+      res.status(400).redirect("/login.html");
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
     }
     //generate a JWT token
-    const token = jwt.sign({ username: user.username }, "secret", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { username: user.username },
+      Process.env.SECRET_KEY,
+      {
+        expiresIn: "1h",
+      }
+    );
     res.cookie("token", token, { httpOnly: true });
 
     res.redirect("/Landing Page/index.html");
@@ -119,7 +124,7 @@ router.post("/checkUsername", async (req, res) => {
     if (user) {
       return res.send("Username already exists");
     }
-    res.status(201).send("Username available");
+    res.status(201).send("");
   } catch (err) {
     console.log(err);
     return res.status(500).json({ errors: [{ msg: "Server error" }] });
@@ -133,7 +138,7 @@ router.post("/checkEmail", async (req, res) => {
     if (user) {
       return res.send("Email already exists");
     }
-    res.status(201).send("Email available");
+    res.status(201).send("");
   } catch (err) {
     console.log(err);
     return res.status(500).json({ errors: [{ msg: "Server error" }] });
