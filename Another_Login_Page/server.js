@@ -4,9 +4,21 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const router = require("./authRoutes");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 // const express = require("express");
 const app = express();
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialized: true,
+//     cookie: { maxAge: 600000 },
+
+//     // cookie: { secure: true },
+//   })
+// );
+
 app.use(cookieParser());
 // const path = require("path");
 

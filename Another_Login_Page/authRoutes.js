@@ -1,22 +1,36 @@
 // // authentication routes
 const express = require("express");
+const app = express();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { getDb } = require("./db");
+const { getDb, client, db } = require("./db");
 const router = express.Router();
 const verifyToken = require("./authMiddleware");
 const { body, validationResult } = require("express-validator");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+// create a session store
 
-router.get("/", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
-});
-router.get("/signup", (req, res) => {
-  res.sendFile(__dirname + "/signup.html");
-});
-router.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
-});
+async function createSession() {
+  const db = await getDb();
+  let sessionStore = MongoStore.create({
+    client: db,
+
+    ttl: 1000 * 60 * 60 * 6,
+  });
+
+  return sessionStore;
+}
+
 // validate username and password and email using express-validator
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: false,
+    store: createSession(),
+  })
+);
 
 router.post(
   "/signup",
@@ -58,7 +72,7 @@ router.post(
     }
     const { username, password, email } = req.body;
     try {
-      const db = getDb();
+      const db = await getDb();
       //check if username or email already exists
       console.log(username, email);
       const user = await db
@@ -86,40 +100,77 @@ router.post(
     }
   }
 );
-router.post("/login", async (req, res) => {
-  console.log(req.body);
-  const { username, password } = req.body;
-  try {
-    const db = getDb();
-    const user = await db.collection("users").findOne({ username: username });
-    if (!user) {
-      // return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
-      res.status(400).redirect("/login.html");
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
-    }
-    //generate a JWT token
-    const token = jwt.sign(
-      { username: user.username },
-      Process.env.SECRET_KEY,
-      {
-        expiresIn: "1h",
-      }
-    );
-    res.cookie("token", token, { httpOnly: true });
+router.post(
+  "/login",
 
-    res.redirect("/Landing Page/index.html");
-  } catch (err) {
-    console.log(err);
-    return res.status(500).json({ errors: [{ msg: "Server error" }] });
+  async (req, res) => {
+    console.log(req.body);
+    const { username, password } = req.body;
+    try {
+      const db = await getDb();
+      const user = await db.collection("users").findOne({ username: username });
+      if (!user) {
+        // return res.status(400).json({ errors: [{ msg: "Invalid credentials" }] });
+        // return res
+        //   .status(400)
+        //   .json({ errors: [{ msg: "Invalid credentials" }] });
+        res.status(401).send(`
+          <div class="message" classes="remove message:50s,add no-message:2s" remove-me="180s">
+            invalid credentials
+          </div>`);
+
+        return;
+      }
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        // return res
+        //   .status(400)
+        //   .json({ errors: [{ msg: "Invalid credentials" }] });
+
+        res.status(401).send(`
+        <div class="message" classes="remove message:50s,add no-message:2s" remove-me="180s">
+          invalid credentials
+        </div>`);
+        return;
+      }
+      //generate a JWT token
+      const token = jwt.sign(
+        { username: user.username },
+        process.env.SECRET_KEY,
+        {
+          expiresIn: "1h",
+        }
+      );
+      res.cookie("token", token, { httpOnly: true });
+      console.log(token);
+
+      // create a session
+      await req.session.regenerate(function (err) {
+        if (err) {
+          return next(err);
+        }
+        req.session.user = req.body.username;
+        req.session.authorized = true;
+
+        req.session.save(function (err) {
+          if (err) {
+            next(err);
+          }
+          console.log("Session created successfully");
+        });
+      });
+
+      res.redirect("/Landing Page/index.html");
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({ errors: [{ msg: "Server error" }] });
+    }
   }
-});
+);
 router.post("/checkUsername", async (req, res) => {
   const { username } = req.body;
   try {
-    const db = getDb();
+    const db = await getDb();
     const user = await db.collection("users").findOne({ username: username });
     if (user) {
       return res.send("Username already exists");
@@ -133,7 +184,7 @@ router.post("/checkUsername", async (req, res) => {
 router.post("/checkEmail", async (req, res) => {
   const { email } = req.body;
   try {
-    const db = getDb();
+    const db = await getDb();
     const user = await db.collection("users").findOne({ email: email });
     if (user) {
       return res.send("Email already exists");
@@ -180,4 +231,23 @@ router.get("/protected", verifyToken, (req, res) => {
 
   res.json({ message: `Protected route accessed by ${username}` });
 });
+const requireAuth = (req, res, next) => {
+  if (req.session) {
+    next();
+  } else {
+    console.log(req.session);
+    res.sendFile(__dirname + "/login.html");
+  }
+};
+
+router.get("/", requireAuth, (req, res) => {
+  res.sendFile(__dirname + "/Landing Page/index.html");
+});
+router.get("/signup", (req, res) => {
+  res.sendFile(__dirname + "/signup.html");
+});
+router.get("/login", requireAuth, (req, res) => {
+  res.sendFile(__dirname + "/Landing Page/index.html");
+});
+
 module.exports = router;

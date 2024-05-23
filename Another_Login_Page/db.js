@@ -22,7 +22,7 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    db = client.db("gaurav_project1");
+    db = await client.db("gaurav_project1");
     console.log("Connected successfully to server");
 
     // Send a ping to confirm a successful connection
@@ -38,9 +38,11 @@ async function run() {
   }
 }
 run().catch(console.dir);
-function getDb() {
+// run().catch(console.dir);
+async function getDb() {
   return db;
 }
 module.exports = {
   getDb,
+  client,
 };

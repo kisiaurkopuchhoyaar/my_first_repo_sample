@@ -4,17 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    
+    <script src="https://unpkg.com/htmx.org@1.9.12" integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/response-targets.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/class-tools.js"></script>
+    <script src="https://unpkg.com/htmx.org@1.9.12/dist/ext/remove-me.js"></script>
+
     <link rel="stylesheet" href="styles.css">
+   
     <!-- <script src="script.js"></script> -->
+    <style>
+     
+        .message{
+            max-width:100%;
+            display:block;
+            position: relative;
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            color:hsl(11, 69%, 64%);
+            animation : blink  5s linear infinite;
+            margin-inline:auto;
+            align-content: center;
+            padding :2rem;
+            
+            
+
+        }
+        .no-message{
+            display:none;
+            
+        }
+
+        @keyframes blink {
+        to {
+            opacity: 0;
+            filter:hue-rotate(110deg);
+            transform: scaleY(1.4);
+            
+             
+        }
+    }
+    </style>
 </head>
 <body>
    <div class = "super-container">
-    <div class="container">
-        <form action="/login" class="form-container" method="post">
+    <div class="container" hx-ext="response-targets,class-tools">
+        <form action="/login" class="form-container" method="post"
+        hx-post="/login" hx-target-error=".error-message" hx-swap="setHTMLUnsafe" >
             <h1 class="title" data-text="login">SignIn</h1>
             <div class ="input-container">
                 <span id="username-error" "></span>
-            <input type="text" name="username" id="username" autocomplete="username" required maxlength="20" >
+            <input type="text" name="username" id="username" autocomplete="username" required minlength="4" maxlength="20" >
             <label for="username">Username</label>
             </div>
             <div class ="input-container">
@@ -22,13 +63,31 @@
             <input type="password" name="password" id="password" autocomplete="current-password" required minlength="6" maxlength="20">
             <label for="password">Password</label>
             </div>
-            <input type="submit" class ="btn" value="login">
-            <a href="reset.html">Forgot password ?</a><br>
+            <input type="submit"  class ="btn" value="login">
+            <a href="reset.html" target="_blank" rel="noopener">Forgot password ?</a><br>
             <a href="signup.html">Don't have an account?</a>
+            <div class ="error-message" hx-ext="class-tools,remove-me" >
+                
+
+            
+                
+            </div>
+          
+           
+            
             
         </form>
     </div>
-    </div>
+    
 </div>
+<script type =speculationrules>
+    {
+        "prerender": [
+          {
+            "urls": ["reset.html", "/Landing Page/index.html"]
+          }
+        ]
+      }
+</script>
 </body>
 </html>

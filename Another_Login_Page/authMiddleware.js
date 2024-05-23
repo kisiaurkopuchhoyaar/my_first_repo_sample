@@ -4,11 +4,12 @@ const jwt = require("jsonwebtoken");
 function verifyToken(req, res, next) {
   // access  token through cookie
   const token = req.cookies.token;
+  console.log(token);
   if (!token) {
     return res.status(401).json({ message: "No token provided" });
   }
   try {
-    const decoded = jwt.verify(token, Process.env.SECRET_KEY); // Replace with your own JWT secret key
+    const decoded = jwt.verify(token, process.env.SECRET_KEY); // Replace with your own JWT secret key
     req.user = decoded;
     next();
   } catch (err) {
